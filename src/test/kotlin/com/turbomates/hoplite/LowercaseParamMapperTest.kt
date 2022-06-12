@@ -3,9 +3,9 @@ package com.turbomates.hoplite
 import com.sksamuel.hoplite.ConfigException
 import com.sksamuel.hoplite.ConfigLoaderBuilder
 import com.sksamuel.hoplite.addResourceSource
+import org.junit.jupiter.api.assertThrows
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import org.junit.jupiter.api.assertThrows
 
 class LowercaseParamMapperTest {
     @Test
@@ -30,5 +30,3 @@ class LowercaseParamMapperTest {
 
     data class MyConfig(val hopliteCount: Int)
 }
-
-

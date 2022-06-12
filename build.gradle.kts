@@ -24,7 +24,7 @@ dependencies {
     implementation(deps.secretsmanager)
     implementation(deps.mockito.kotlin)
     api(deps.hoplite)
-    detektPlugins(deps.plugins.detekt)
+    detektPlugins(deps.detekt.formatting)
     testImplementation(kotlin("test"))
 }
 

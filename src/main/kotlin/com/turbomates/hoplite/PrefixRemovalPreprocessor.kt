@@ -7,7 +7,6 @@ import com.sksamuel.hoplite.Node
 import com.sksamuel.hoplite.PrimitiveNode
 import com.sksamuel.hoplite.fp.valid
 import com.sksamuel.hoplite.preprocessor.Preprocessor
-import com.sksamuel.hoplite.preprocessor.TraversingPrimitivePreprocessor
 
 class PrefixRemovalPreprocessor(private val prefix: String) : Preprocessor {
     override fun process(node: Node): ConfigResult<Node> {

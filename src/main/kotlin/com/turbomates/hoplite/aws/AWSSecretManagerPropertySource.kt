@@ -23,4 +23,3 @@ class AWSSecretManagerPropertySource(
 
     override fun source(): String = "Amazon Secrets Manager"
 }
-

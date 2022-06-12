@@ -12,13 +12,13 @@ import kotlinx.coroutines.runBlocking
 class VaultPropertySource(
     private val useUnderscoresAsSeparator: Boolean,
     private val allowUppercaseNames: Boolean,
-    private val vaultAPI: VaultAPI,
+    private val api: VaultAPI,
     private val namespace: String,
     private val key: String,
 ) : PropertySource {
     override fun node(context: PropertySourceContext): ConfigResult<Node> {
         return runBlocking {
-            vaultAPI.read(namespace, key).mapKeys {
+            api.read(namespace, key).mapKeys {
                 it.key.normalize(useUnderscoresAsSeparator, allowUppercaseNames)
             }.toNode("vault").valid()
         }

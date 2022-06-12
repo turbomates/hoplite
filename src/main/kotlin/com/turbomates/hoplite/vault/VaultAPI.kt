@@ -31,10 +31,12 @@ class VaultAPI(domain: String, private val token: String) {
             header("Content-Type", "application/json")
         }
         install(ContentNegotiation) {
-            json(Json {
-                isLenient = true
-                ignoreUnknownKeys = true
-            })
+            json(
+                Json {
+                    isLenient = true
+                    ignoreUnknownKeys = true
+                }
+            )
         }
     }
 
@@ -44,13 +46,15 @@ class VaultAPI(domain: String, private val token: String) {
 
     suspend fun listKeys(namespace: String): List<String> {
         return try {
-            return vaultClient.get("$domain/v1/$namespace?list=true").body<SecretListKeys>().data.getOrDefault(LIST_KEY, listOf())
+            return vaultClient.get("$domain/v1/$namespace?list=true")
+                .body<SecretListKeys>()
+                .data
+                .getOrDefault(LIST_KEY, listOf())
         } catch (ignore: ClientRequestException) {
             logger.debug("Vault request error: ${ignore.message} ${ignore.stackTraceToString()}")
             listOf()
         }
     }
-
 
     suspend fun read(namespace: String, key: String): Map<String, String?> {
         return try {
@@ -84,7 +88,6 @@ class VaultAPI(domain: String, private val token: String) {
         }
     }
 }
-
 
 @Serializable
 private data class SecretListKeys(
@@ -125,4 +128,3 @@ private data class SecretAuth(
     val leaseDuration: Int,
     val renewable: Boolean
 )
-

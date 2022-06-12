@@ -23,6 +23,7 @@ dependencyResolutionManagement {
             library("hoplite", "com.sksamuel.hoplite", "hoplite-core").versionRef("hoplite")
             library("secretsmanager", "aws.sdk.kotlin", "secretsmanager").versionRef("secretsmanager")
             library("mockito_kotlin", "org.mockito.kotlin", "mockito-kotlin").versionRef("mockito-kotlin")
+            library("detekt_formatting", "io.gitlab.arturbosch.detekt", "detekt-formatting").versionRef("detekt")
             bundle(
                 "ktor_client", listOf(
                     "ktor_client_cio",
