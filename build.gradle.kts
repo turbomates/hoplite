@@ -36,14 +36,11 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "11"
 }
 
-tasks.withType<Detekt>().configureEach {
-    autoCorrect = true
-    reports {
-        html.required.set(true) // observe findings in your browser with structure and code snippets
-        xml.required.set(true) // checkstyle like format mainly for integrations like Jenkins
-        txt.required.set(true) // similar to the console output, contains issue signature to manually edit baseline files
-        sarif.required.set(true) // standardized SARIF format (https://sarifweb.azurewebsites.net/) to support integrations with Github Code Scanning
-    }
+detekt {
+    toolVersion = deps.versions.detekt.get()
+    autoCorrect = false
+    parallel = true
+    config = files("detekt.yml")
 }
 
 java {

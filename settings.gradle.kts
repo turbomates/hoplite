@@ -6,7 +6,7 @@ dependencyResolutionManagement {
     versionCatalogs {
         create("deps") {
             version("ktor", "2.0.2")
-            version("detekt", "1.20.0")
+            version("detekt", "1.21.0-RC1")
             version("hoplite", "2.1.5")
             version("kotlin", "1.6.20")
             version("secretsmanager", "0.16.1-beta")
