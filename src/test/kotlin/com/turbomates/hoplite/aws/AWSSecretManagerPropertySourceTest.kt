@@ -13,7 +13,7 @@ class AWSSecretManagerPropertySourceTest {
         val api = mock<SecretManagerAPI> {
             onBlocking {
                 secret(any())
-            } doReturn (mapOf("count" to "2"))
+            } doReturn mapOf("count" to "2")
         }
         val vault = ConfigLoaderBuilder.default()
             .addPropertySource(

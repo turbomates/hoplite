@@ -12,11 +12,8 @@ class PrefixRemovalPreprocessor(private val prefix: String) : Preprocessor {
     override fun process(node: Node): ConfigResult<Node> {
         val newNode = when (node) {
             is MapNode -> {
-                val nodeMap = when (val prefixNode = node.map[prefix]) {
-                    is MapNode -> node.map + prefixNode.map
-                    else -> node.map
-                }
-
+                val prefixNode = node.map[prefix]
+                val nodeMap = if (prefixNode is MapNode) node.map + prefixNode.map else node.map
                 MapNode(nodeMap.map { (k, v) -> k to process(v).getUnsafe() }.toMap(), node.pos, node.path, node.value)
             }
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues>
+    <ID>StringLiteralDuplication:VaultAPI.kt$VaultAPI$"$domain/v1/$namespace/$key"</ID>
+    <ID>StringLiteralDuplication:VaultAPI.kt$VaultAPI$"Vault request error: ${ignore.message} ${ignore.stackTraceToString()}"</ID>
+  </ManuallySuppressedIssues>
+  <CurrentIssues>
+
+  </CurrentIssues>
+</SmellBaseline>

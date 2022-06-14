@@ -13,7 +13,7 @@ class VaultPreprocessorTest {
         val api = mock<VaultAPI> {
             onBlocking {
                 read(any(), any())
-            } doReturn (mapOf("count" to "2"))
+            } doReturn mapOf("count" to "2")
         }
         val vault = ConfigLoaderBuilder.default()
             .addPropertySource(
