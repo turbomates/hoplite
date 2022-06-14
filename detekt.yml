@@ -2,6 +2,7 @@ build:
   maxIssues: 0
 
 coroutines:
+  severity: error
   active: true
   GlobalCoroutineUsage:
     active: true
@@ -13,6 +14,7 @@ coroutines:
     active: true
 
 complexity:
+  severity: error
   LargeClass:
     active: true
     threshold: 400
@@ -42,12 +44,14 @@ complexity:
     active: false
 
 exceptions:
+  severity: error
   TooGenericExceptionCaught:
     allowedExceptionNameRegex: '_|(ignore|expected|logging|transient).*'
   ObjectExtendsThrowable:
     active: true
 
 formatting:
+  severity: error
   AnnotationOnSeparateLine:
     active: true
   AnnotationSpacing:
@@ -108,6 +112,7 @@ formatting:
     autoCorrect: true
 
 naming:
+  severity: error
   BooleanPropertyNaming:
     active: true
     allowedPattern: '^(is|has|are|should)'
@@ -135,12 +140,14 @@ naming:
     active: true
 
 performance:
+  severity: error
   CouldBeSequence:
     active: true
   SpreadOperator:
     active: true
 
 potential-bugs:
+  severity: error
   CastToNullableType:
     active: true
   DontDowncastCollectionTypes:
@@ -163,6 +170,7 @@ potential-bugs:
     active: false
 
 style:
+  severity: error
   CanBeNonNullable:
     active: true
   ClassOrdering:
