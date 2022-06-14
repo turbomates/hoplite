@@ -14,27 +14,21 @@ class VaultPreprocessor(private val vaultAPI: VaultAPI) : TraversingPrimitivePre
     private val regex = "vault:(.*?)/(.*?)".toRegex()
 
     override fun handle(node: PrimitiveNode): ConfigResult<Node> =
-        when (node) {
-            is StringNode ->
-                when (val match = regex.matchEntire(node.value)) {
-                    null -> node.valid()
-                    else -> {
-                        val data = runBlocking {
-                            vaultAPI.read(
-                                match.groups[1]!!.value,
-                                match.groups[2]!!.value
-                            )
-                        }
-
-                        if (data.isEmpty()) {
-                            node.valid()
-                        } else {
-                            process(data.toNode("vault"))
-                        }
-                    }
+        if (node is StringNode) {
+            val match = regex.matchEntire(node.value)
+            if (match == null) node.valid() else {
+                val data = runBlocking {
+                    vaultAPI.read(
+                        match.groups[1]!!.value,
+                        match.groups[2]!!.value
+                    )
                 }
-            else -> {
-                node.valid()
+
+                if (data.isEmpty()) {
+                    node.valid()
+                } else {
+                    process(data.toNode("vault"))
+                }
             }
-        }
+        } else node.valid()
 }
