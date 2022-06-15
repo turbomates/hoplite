@@ -1,4 +1,5 @@
-Hoplite
+![](https://turbomates.com/wp-content/uploads/2019/11/logo-e1573642672476.png)
+# Hoplite
 
 Decorator over hoplite to work with `Amazon, Vault, Environment variables`
 
