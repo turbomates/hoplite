@@ -1,4 +1,3 @@
-import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -57,7 +56,7 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             artifactId = "hoplite"
-            groupId = "com.turbomates.kotlin"
+            groupId = "com.turbomates"
             from(components["java"])
             pom {
                 packaging = "jar"
