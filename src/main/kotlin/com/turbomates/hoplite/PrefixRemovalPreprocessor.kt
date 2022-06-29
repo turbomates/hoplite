@@ -12,7 +12,7 @@ class PrefixRemovalPreprocessor(private val prefix: String) : Preprocessor {
     override fun process(node: Node): ConfigResult<Node> {
         val newNode = when (node) {
             is MapNode -> {
-                val nodeMap = when (val prefixNode = node.map[prefix]) {
+                val nodeMap = when (val prefixNode = node.map[prefix.lowercase()] ?: node.map[prefix.uppercase()]) {
                     is MapNode -> node.map + prefixNode.map
                     else -> node.map
                 }

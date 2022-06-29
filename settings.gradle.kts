@@ -18,7 +18,6 @@ dependencyResolutionManagement {
             library("ktor_client_content_negotiation", "io.ktor", "ktor-client-content-negotiation").versionRef("ktor")
             library("ktor_client_cio", "io.ktor", "ktor-client-cio").versionRef("ktor")
             library("ktor_client_serialization", "io.ktor", "ktor-serialization-kotlinx-json").versionRef("ktor")
-            library("kotlin_test", "org.jetbrains.kotlin", "kotlin-test-junit5").versionRef("kotlin")
             library("kotlin_serialization_json", "org.jetbrains.kotlinx", "kotlinx-serialization-json").versionRef("kotlin_serialization_json")
             library("hoplite", "com.sksamuel.hoplite", "hoplite-core").versionRef("hoplite")
             library("secretsmanager", "aws.sdk.kotlin", "secretsmanager").versionRef("secretsmanager")
