@@ -17,6 +17,7 @@ class PrefixRemovalPreprocessorTest {
             .loadConfigOrThrow<MyConfig>()
         assertEquals(2, config.count)
     }
+
     @Test
     fun `test prefix removal exception`() {
         assertThrows<ConfigException> {
@@ -26,5 +27,6 @@ class PrefixRemovalPreprocessorTest {
                 .loadConfigOrThrow<MyConfig>()
         }
     }
+
     data class MyConfig(val count: Int)
 }
