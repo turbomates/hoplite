@@ -1,7 +1,6 @@
 rootProject.name = "hoplite"
 
 
-enableFeaturePreview("VERSION_CATALOGS")
 dependencyResolutionManagement {
     versionCatalogs {
         create("deps") {
