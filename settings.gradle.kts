@@ -5,13 +5,13 @@ enableFeaturePreview("VERSION_CATALOGS")
 dependencyResolutionManagement {
     versionCatalogs {
         create("deps") {
-            version("ktor", "2.3.0")
+            version("ktor", "2.3.11")
             version("detekt", "1.21.0")
             version("hoplite", "2.7.5")
-            version("kotlin", "1.9.0")
-            version("secretsmanager", "0.25.0-beta")
+            version("kotlin", "2.0.0")
+            version("secretsmanager", "1.1.0")
             version("test_logger", "3.0.0")
-            version("kotlin_serialization_json", "1.3.3")
+            version("kotlin_serialization_json", "1.7.0")
             version("nexus_staging", "0.30.0")
             version("mockito-kotlin", "4.0.0")
 
