@@ -1,21 +1,20 @@
 package com.turbomates.hoplite.aws
 
-import aws.sdk.kotlin.runtime.auth.credentials.StaticCredentialsProvider
 import aws.sdk.kotlin.services.secretsmanager.SecretsManagerClient
 import aws.sdk.kotlin.services.secretsmanager.model.GetSecretValueRequest
-import aws.smithy.kotlin.runtime.auth.awscredentials.Credentials
+import aws.smithy.kotlin.runtime.auth.awscredentials.CredentialsProvider
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
 class SecretManagerAPI(
-    private val private: String,
-    private val secret: String,
+    private val credentials: CredentialsProvider,
+
     private val region: String
 ) {
     suspend fun secret(name: String): Map<String, String> {
         return SecretsManagerClient {
-            credentialsProvider = StaticCredentialsProvider(Credentials(private, secret))
+            credentialsProvider = credentials
             region = this@SecretManagerAPI.region
         }.use { secretsClient ->
             val secretValue = secretsClient.getSecretValue(GetSecretValueRequest { secretId = name })

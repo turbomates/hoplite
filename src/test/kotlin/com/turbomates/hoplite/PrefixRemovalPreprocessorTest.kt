@@ -12,10 +12,11 @@ class PrefixRemovalPreprocessorTest {
     fun `test prefix removal`() {
         val config = ConfigLoaderBuilder.default()
             .addResourceSource("/test.properties")
+            .addResourceSource("/prefix_test.properties")
             .addPreprocessor(PrefixRemovalPreprocessor("prefix"))
             .build()
             .loadConfigOrThrow<MyConfig>()
-        assertEquals(2, config.count)
+        assertEquals(2, config.test.count)
     }
 
     @Test
@@ -28,5 +29,7 @@ class PrefixRemovalPreprocessorTest {
         }
     }
 
-    data class MyConfig(val count: Int)
+    data class MyConfig(val test: Test) {
+        data class Test(val count: Int, val matrix: Int)
+    }
 }

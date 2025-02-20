@@ -14,13 +14,13 @@ class EnvironmentVariablesPropertySource(
     private val environmentVariableMap: () -> Map<String, String> = { System.getenv() },
 ) : PropertySource {
 
-    override fun source(): String = "Env Var"
+    override fun source(): String = "env"
     override fun node(context: PropertySourceContext): ConfigResult<Node> {
         val props = Properties()
         environmentVariableMap().forEach {
             val key = it.key.normalize(useUnderscoresAsSeparator, allowUppercaseNames)
             props[key] = it.value
         }
-        return props.toNode("env").valid()
+        return props.toNode(source()).valid()
     }
 }
