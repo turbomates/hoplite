@@ -14,10 +14,11 @@ class PrefixRemovalPreprocessor(private val prefix: String) : Preprocessor {
         val newNode = when (node) {
             is MapNode -> {
                 val prefixNode = node.map[prefix.lowercase()] ?: node.map[prefix.uppercase()]
-                val result = if (prefixNode is MapNode) {
+                val cleanNode = prefixNode?.cleanPath(prefix.lowercase())
+                val result = if (cleanNode is MapNode) {
                     val cascader = Cascader(CascadeMode.Merge, true)
                     cascader.cascade(
-                        NonEmptyList(listOf(node, prefixNode.copy(path = DotPath(emptyList()))))
+                        NonEmptyList(listOf(node, cleanNode))
                     ).getUnsafe() as MapNode
                 } else null
                 val nodeMap = if (prefixNode is MapNode) result!!.map else node.map
@@ -35,5 +36,22 @@ class PrefixRemovalPreprocessor(private val prefix: String) : Preprocessor {
         }
 
         return newNode.valid()
+    }
+}
+
+fun Node.cleanPath(prefix: String): Node {
+    return when (this) {
+        is MapNode -> {
+            this.copy(
+                path = DotPath(path.keys.filter { it != prefix }),
+                map = map.mapValues { it.value.cleanPath(prefix) })
+        }
+
+        is ArrayNode -> {
+            this.copy(path = DotPath(path.keys.filter { it != prefix }), elements = elements.map { it.cleanPath(prefix) })
+        }
+
+        is PrimitiveNode -> this
+        else -> this
     }
 }
