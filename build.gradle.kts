@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "com.turbomates.hoplite"
-version = System.getenv("RELEASE_VERSION") ?: "0.0.1"
+version = System.getenv("RELEASE_VERSION") ?: "0.2.0"
 
 repositories {
     mavenCentral()
