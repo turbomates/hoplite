@@ -10,7 +10,7 @@ dependencyResolutionManagement {
             version("secretsmanager", "1.5.68")
             version("test_logger", "4.0.0")
             version("kotlin_serialization_json", "1.9.0")
-            version("nexus_staging", "0.30.0")
+            version("nexus_staging", "2.0.0")
             version("mockito-kotlin", "6.1.0")
 
             library("ktor_client_content_negotiation", "io.ktor", "ktor-client-content-negotiation").versionRef("ktor")
@@ -32,7 +32,7 @@ dependencyResolutionManagement {
             plugin("kotlin_serialization", "org.jetbrains.kotlin.plugin.serialization").versionRef("kotlin")
             plugin("test_logger", "com.adarshr.test-logger").versionRef("test_logger")
             plugin("detekt", "io.gitlab.arturbosch.detekt").versionRef("detekt")
-            plugin("nexus_release", "io.codearte.nexus-staging").versionRef("nexus_staging")
+            plugin("nexus.release", "io.github.gradle-nexus.publish-plugin").versionRef("nexus_staging")
         }
     }
 }
